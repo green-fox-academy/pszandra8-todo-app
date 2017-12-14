@@ -1,3 +1,17 @@
-Walk the dog
-Do homework
+[ ] Walk the dog
+[ ] Do homework
+[ ] Feed the monkey[ ] Walk the dog
+[x] [x] [x] [ ] Do homework
+[ ] Feed the monkey[ ] Walk the dog
+[x] [x] [x] [x] [x] [ ] Do homework
+[ ] Feed the monkey[ ] Walk the dog
+[x] [x] [x] [ ] Do homework
+[ ] Feed the monkey[ ] Walk the dog
+[x] [x] [x] [x] [x] [x] [x] [x] [x] [ ] Do homework
+[ ] Feed the monkey[ ] Walk the dog
+[x] [x] [x] [ ] Do homework
+[ ] Feed the monkey[ ] Walk the dog
+[x] [x] [x] [x] [x] [ ] Do homework
+[ ] Feed the monkey[ ] Walk the dog
+[x] [x] [x] [ ] Do homework
 [ ] Feed the monkey

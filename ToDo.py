@@ -51,6 +51,24 @@ def remove_Text():
     except IOError:
         print("Unable to write file.")
 
+def check():
+    try:
+        t_file = open(filename, "r")
+        lines = t_file.readlines()
+        t_file.close()
+        lines_for_write = open(filename, "a")
+        for line in lines:
+            if sys.argv[2] == 1:
+                lines[0] = "[x] " + lines[0]
+            else:
+                index = int(sys.argv[2]) - 1
+                lines[index] = "[x] " + lines[index]
+        lines_for_write.writelines(lines)
+        t_file.close()
+            
+    except FileNotFoundError:
+        return 0
+    
 if len(sys.argv) == 1:
     print_usage_info()
 elif len(sys.argv) == 2 or len(sys.argv) == 3:
@@ -61,6 +79,6 @@ elif len(sys.argv) == 2 or len(sys.argv) == 3:
     elif sys.argv[1] == "-r":
         remove_Text()
     elif sys.argv[1] == "-c":
-        print("Completes a task")
+        check()
     else:
         print("Unsupported argument")
