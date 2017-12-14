@@ -56,13 +56,9 @@ def check():
         t_file = open(filename, "r")
         lines = t_file.readlines()
         t_file.close()
-        lines_for_write = open(filename, "a")
-        for line in lines:
-            if sys.argv[2] == 1:
-                lines[0] = "[x] " + lines[0]
-            else:
-                index = int(sys.argv[2]) - 1
-                lines[index] = "[x] " + lines[index]
+        lines_for_write = open(filename, "w")
+        index = int(sys.argv[2]) - 1
+        lines[index] = "[x]" + lines[index][3:]
         lines_for_write.writelines(lines)
         t_file.close()
             
