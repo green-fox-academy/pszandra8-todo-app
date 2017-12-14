@@ -17,10 +17,10 @@ def open_Text():
         lines = t_file.readlines()
         t_file.close()
         counter = 0
-        for i in range(len(lines)):
-            if len(lines) == 0:
-                print("There are no todos for today")
-            else:
+        if len(lines) == 0:
+            print("There are no todos for today")
+        else:
+            for i in range(len(lines)):
                 counter += 1
                 print(str(counter) + " - " + lines[i].strip())
     except FileNotFoundError:
@@ -29,12 +29,23 @@ def open_Text():
 def add_to_Text():
     try:
         t_file = open(filename, "a")
-        user_input = input("Please add a new task: ")
-        t_file.write("\n" + user_input)
+        user_input = sys.argv[2]
+        t_file.write("\n[ ] " + user_input)
         t_file.close()
     except IOError:
         print("Unable to write file.")
 
+def remove_Text():
+    try:
+        t_file = open(filename, "r")
+        lines = t_file.readlines()
+        print(lines)
+        for i in range(len(lines)):
+            index = int(sys.argv[2])
+            lines.remove(lines[index])
+        t_file.close()
+    except IOError:
+        print("Unable to write file.")
 
 if len(sys.argv) == 1:
     print_usage_info()
@@ -44,7 +55,7 @@ elif len(sys.argv) == 2 or len(sys.argv) == 3:
     elif sys.argv[1] == "-a":
         add_to_Text()
     elif sys.argv[1] == "-r":
-        print("Reomves a task")
+        remove_Text()
     elif sys.argv[1] == "-c":
         print("Completes a task")
     else:
