@@ -39,10 +39,14 @@ def remove_Text():
     try:
         t_file = open(filename, "r")
         lines = t_file.readlines()
-        print(lines)
-        for i in range(len(lines)):
-            index = int(sys.argv[2])
-            lines.remove(lines[index])
+        lines_for_write = open(filename, "w")
+        if sys.argv[2] == 1:
+            lines.pop(0)
+        else:
+            index = int(sys.argv[2]) - 1
+            lines.pop(index)
+            for line in lines:
+                lines_for_write.write(line)
         t_file.close()
     except IOError:
         print("Unable to write file.")
