@@ -11,30 +11,41 @@ def print_usage_info():
         "-r   Removes a task\n"
         "-c   Completes a task\n")
 
+def open_Text():
+    try:
+        t_file = open(filename, "r")
+        lines = t_file.readlines()
+        t_file.close()
+        counter = 0
+        for i in range(len(lines)):
+            if len(lines) == 0:
+                print("There are no todos for today")
+            else:
+                counter += 1
+                print(str(counter) + " - " + lines[i].strip())
+    except FileNotFoundError:
+        return 0
+
+def add_to_Text():
+    try:
+        t_file = open(filename, "a")
+        user_input = input("Please add a new task: ")
+        t_file.write("\n" + user_input)
+        t_file.close()
+    except IOError:
+        print("Unable to write file.")
+
+
 if len(sys.argv) == 1:
     print_usage_info()
-elif len(sys.argv) == 2:
+elif len(sys.argv) == 2 or len(sys.argv) == 3:
     if sys.argv[1] == "-l":
-        print("Lists all tasks")
+        open_Text()
     elif sys.argv[1] == "-a":
-        print("Adds a new task")
+        add_to_Text()
     elif sys.argv[1] == "-r":
         print("Reomves a task")
     elif sys.argv[1] == "-c":
         print("Completes a task")
     else:
         print("Unsupported argument")
-
-def open_Text():
-    try:
-        file = open(filename, "r")
-        lines = file.readlines()
-        file.close()
-        counter = 0
-        for i in lines:
-            counter += 1
-            return str(counter) + ". " + i
-    except FileNotFoundError:
-        return 0
-
-print(open_Text())
