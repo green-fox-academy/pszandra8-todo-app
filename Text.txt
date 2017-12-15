@@ -1,4 +1,4 @@
-[ ] Walk the dog
-[x]  Feed the monkey
 [x] Feed the monkey
+[x] Walk the dog
 [ ] Sleep
+[ ] doing nothing
